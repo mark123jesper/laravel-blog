@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class QuestionController extends Controller
 {
@@ -38,9 +39,10 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // auth()->user()->question()->create($request->all());
-        Question::create($request->all());
-        return response('Question Created', Response::HTTP_CREATED);
+        // $request['slug'] = Str::slug($request->title);
+        //or refer tp QUestion model to see boot utilization
+        $question = auth()->user()->question()->create($request->all());
+        return response(new QuestionResource($question), Response::HTTP_CREATED);
     }
 
     /**

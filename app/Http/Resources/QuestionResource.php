@@ -19,11 +19,14 @@ class QuestionResource extends JsonResource
 
         //Returning specific fields for security
         return [
+            'id' => $this->id,
             'title' => $this->title,
+            'slug' => $this->slug,
             'path' => $this->path,
             'body' => $this->body,
             'created_at' => $this->created_at->diffForHumans(),
             'user' => $this->user->name,
+            'user_id' => $this->user_id
         ];
     }
 }

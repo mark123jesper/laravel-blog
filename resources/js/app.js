@@ -1,17 +1,26 @@
 require('./bootstrap');
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
+
 
 window.Vue = require('vue');
 import Vue from 'vue';
-import Vuetify from 'vuetify';
 import router from './Router/router';
 
+import Vuetify from 'vuetify';
 Vue.use(Vuetify);
+
+import VueEasymde from "vue-easymde";
+Vue.component('vue-easymde', VueEasymde)
 
 import User from './Helpers/User';
 window.User = User;
-console.log(User.hasToken());
+
+// console.log(User.hasToken());
 
 window.EventBus = new Vue();
+
+import md from 'marked';
+window.md = md;
 
 Vue.component('app-home', require('./components/AppHome.vue').default);
 

@@ -15,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/{path?}', function () {
     return view('app');
 });
+Route::get('/{path?}/{path1?}', function () {
+    return view('app');
+});

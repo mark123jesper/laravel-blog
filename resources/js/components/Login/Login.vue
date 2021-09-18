@@ -1,5 +1,5 @@
 <template>
-<v-container fluid>
+<v-container>
     <h1>Login</h1>
     <v-form v-on:submit="login">
     <v-container>

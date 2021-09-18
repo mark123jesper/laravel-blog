@@ -46,6 +46,13 @@ class User {
             return payload.sub;
         }
     }
+
+    own(id) {
+        console.log(this.getId());
+        console.log(id);
+        // console.log(this.getId()===id)
+        return this.getId() === id
+    }
 }
 
 export default User = new User();

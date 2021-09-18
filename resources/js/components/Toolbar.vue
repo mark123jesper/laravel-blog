@@ -29,7 +29,12 @@ export default {
                 {title: "Logout", to: "/logout", show: User.hasToken()},
             ]
         }
-    }
+    },
+    created(){
+        EventBus.$on('logout', () => {
+            User.loggedOut();
+        })
+    },
 }
 </script>
 

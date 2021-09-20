@@ -31,6 +31,13 @@ export default {
         if (User.loggedIn()) {
             this.getNotifications();
         }
+
+        Echo.private("App.Models.User." + User.getId()).notification(
+                notification => {
+                    this.unread.unshift( notification.reply.body);
+                    this.unreadCount++;
+                }
+            );
     },
     data() {
         return {

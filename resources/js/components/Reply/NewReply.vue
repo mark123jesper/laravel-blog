@@ -13,7 +13,7 @@ export default {
     data() {
         return {
             form: {
-                body: ""
+                body: null
             }
         };
     },

@@ -5,7 +5,7 @@
             :data="reply"
             :key="reply.id"
             :question="question"
-            :index=index
+            :index="index"
         >
         </single-reply>
     </v-container>
@@ -31,7 +31,7 @@ export default {
                 this.content.push(reply);
             });
 
-            EventBus.$on("deleteReply", (index) => {
+            EventBus.$on("deleteReply", index => {
                 axios
                     .delete(
                         `/api/question/${this.question.slug}/reply/${this.content[index].id}`
@@ -41,6 +41,12 @@ export default {
                     })
                     .catch(error => console.error(error));
             });
+
+            Echo.private("App.Models.User." + User.getId()).notification(
+                notification => {
+                    this.content.push( notification.reply);
+                }
+            );
         }
     }
 };

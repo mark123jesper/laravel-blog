@@ -36,7 +36,7 @@ Route::resource('/question/{question}/reply', 'ReplyController');
 Route::post('/like/{reply}', 'LikeController@like');
 Route::delete('/like/{reply}', 'LikeController@unlike');
 
-
+// This kind of code still needs to have jwt as middleware like tha above code
 // Route::post('/notifications', function(){
 //     return [
 //         'read' => auth()->user()->readNotifications(),
@@ -53,6 +53,7 @@ Route::delete('/like/{reply}', 'LikeController@unlike');
 //         'console' => auth()->user()
 //     ];
 // });
+
 
 Route::post('notifications', 'NotificationController@index');
 Route::post('markAsRead', 'NotificationController@markAsRead');

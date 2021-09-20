@@ -27,7 +27,9 @@
     },
     "dependencies": {
         "cross-env": "^7.0.3",
+        "laravel-echo": "^1.11.2",
         "material-design-icons-iconfont": "^6.1.0",
+        "pusher-js": "^7.0.3",
         "vue-easymde": "^1.4.0",
         "vue-router": "^3.5.2",
         "vue-simplemde": "^2.0.0",

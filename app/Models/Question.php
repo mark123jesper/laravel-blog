@@ -43,6 +43,7 @@ class Question extends Model
     public function getPathAttribute()
     {
         return "question/$this->slug";
+        // return "$this->slug";
     }
 
     public function user()

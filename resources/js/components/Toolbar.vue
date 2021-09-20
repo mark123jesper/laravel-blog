@@ -2,19 +2,20 @@
     <v-app-bar color="light-grey">
         <router-link to="/" style="text-decoration: none; color: inherit;">
             <v-toolbar-title>
-             Chainlink
+                Chainlink
             </v-toolbar-title>
         </router-link>
         <v-spacer></v-spacer>
+        <app-notification v-if="loggedIn"> </app-notification>
         <div>
             <!-- class="hidden-sm-and-down" -->
             <router-link
-            v-for="item in items"
-            :key="item.title"
-            :to="item.to"
-            v-if="item.show"
+                v-for="item in items"
+                :key="item.title"
+                :to="item.to"
+                v-if="item.show"
             >
-                <v-btn text>{{item.title}}</v-btn>
+                <v-btn text>{{ item.title }}</v-btn>
             </router-link>
         </div>
     </v-app-bar>
@@ -70,7 +71,9 @@
 </template>
 
 <script>
+import AppNotification from "./AppNotification.vue";
 export default {
+    components: { AppNotification },
     data() {
         return {
             drawer: null,
@@ -78,10 +81,11 @@ export default {
             items: [
                 { title: "Forum", to: "/forum", show: true },
                 { title: "Ask Question", to: "/ask", show: User.hasToken() },
-                { title: "Category", to: "/category", show: User.hasToken() },
+                { title: "Category", to: "/category", show: User.admin() },
                 { title: "Login", to: "/login", show: !User.hasToken() },
                 { title: "Logout", to: "/logout", show: User.hasToken() }
-            ]
+            ],
+            loggedIn: User.loggedIn()
         };
     },
     created() {

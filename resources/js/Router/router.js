@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Login from '../components/Login/Login';
-import Signup from '../components/Login/Signup';
-import Logout from '../components/Login/Logout';
-import Forum from '../components/Forum/Forum';
-import Read from '../components/Forum/Read';
+import Login from '../components/Login/Login.vue';
+import Signup from '../components/Login/Signup.vue';
+import Logout from '../components/Login/Logout.vue';
+import Forum from '../components/Forum/Forum.vue';
+import Read from '../components/Forum/Read.vue';
 import AskQuestion from '../components/Forum/AskQuestion.vue';
+import CreateCategory from '../components/Category/CreateCategory.vue';
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,7 @@ const routes = [
    { path: '/forum', component: Forum, name: 'forum' },
    { path: '/question/:slug', component: Read, name: 'read' },
    { path: '/ask', component: AskQuestion, name: 'ask-question' },
+   { path: '/category', component: CreateCategory, name: 'create-category' },
 ];
 
 const router = new VueRouter({

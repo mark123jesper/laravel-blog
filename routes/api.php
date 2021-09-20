@@ -30,7 +30,29 @@ Route::group([
 
 Route::resource('/question', 'QuestionController');
 Route::resource('/category', 'CategoryController');
+
 Route::resource('/question/{question}/reply', 'ReplyController');
 
 Route::post('/like/{reply}', 'LikeController@like');
 Route::delete('/like/{reply}', 'LikeController@unlike');
+
+
+// Route::post('/notifications', function(){
+//     return [
+//         'read' => auth()->user()->readNotifications(),
+//         'unread' => auth()->user()->unreadNotifications(),
+//         'console' => auth()->user()
+//     ];
+// });
+
+
+// Route::get('/notifications', function(){
+//     return [
+//         // 'read' => auth()->user()->readNotifications(),
+//         // 'unread' => auth()->user->unreadNotifications(),
+//         'console' => auth()->user()
+//     ];
+// });
+
+Route::post('notifications', 'NotificationController@index');
+Route::post('markAsRead', 'NotificationController@markAsRead');

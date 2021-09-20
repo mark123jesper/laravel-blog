@@ -4,7 +4,7 @@
 <script>
 export default {
     created() {
-        EventBus.$emit('logout')
+        EventBus.$emit('logout');
     }
 };
 </script>

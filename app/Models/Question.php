@@ -21,6 +21,10 @@ class Question extends Model
         "user_id"
     ];
 
+    protected $with = [
+        'replies'
+    ];
+
     // protected $guarded = [];
     protected static function boot()
     {

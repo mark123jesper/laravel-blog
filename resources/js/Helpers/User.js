@@ -20,9 +20,9 @@ class User {
     hasToken() {
         const storedToken = AppStorage.getToken();
         if (storedToken) {
-            return Token.isValid(storedToken) ? true : false
+            return Token.isValid(storedToken) ? true : this.logout()
         }
-        return false;
+        return false
     }
 
     loggedIn() {
@@ -41,17 +41,18 @@ class User {
     }
 
     getId() {
-        if (this.loggedIn) {
-            const payload = Token.payload(AppStorage.getToken());
-            return payload.sub;
+        if (this.loggedIn()) {
+            const payload = Token.payload(AppStorage.getToken())
+            return payload.sub
         }
     }
 
     own(id) {
-        console.log(this.getId());
-        console.log(id);
-        // console.log(this.getId()===id)
-        return this.getId() === id
+        return this.getId() == id
+    }
+
+    admin() {
+        return this.getId() == 11
     }
 }
 

@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <v-spacer></v-spacer>
-                <v-btn color="light-grey">Replies</v-btn>
+                <v-btn color="light-grey">{{data.replies_count}} Replies</v-btn>
             </v-card-title>
             <v-card-subtitle class="grey--text"
                         >{{ data.user }} posted {{ data.created_at }}</v-card-subtitle

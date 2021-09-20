@@ -42,7 +42,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->save();
-        return response('Category Created', Response::HTTP_CREATED);
+        return response($category, Response::HTTP_CREATED);
     }
 
     /**
@@ -71,7 +71,7 @@ class CategoryController extends Controller
                 'slug' => Str::slug($request->name)
             ]
         );
-        return response('Category Updated', Response::HTTP_OK);
+        return response($category, Response::HTTP_OK);
     }
 
     /**
@@ -83,6 +83,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return response('Category Deleted', Response::HTTP_OK);
+        return response($category, Response::HTTP_OK);
     }
 }

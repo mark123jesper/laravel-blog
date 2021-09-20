@@ -2,7 +2,7 @@
     <v-container fluid grid-list-md>
         <v-layout row wrap>
             <v-flex md3>
-                side bar
+               <app-sidebar></app-sidebar>
             </v-flex>
             <v-flex md9>
                <question
@@ -17,8 +17,9 @@
 
 <script>
 import Question from './Question';
+import AppSidebar from './AppSidebar';
 export default {
-    components: { Question },
+    components: { Question, AppSidebar },
     data() {
         return {
             questions: {

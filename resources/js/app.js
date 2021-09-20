@@ -10,12 +10,14 @@ import Vuetify from 'vuetify';
 Vue.use(Vuetify);
 
 import VueEasymde from "vue-easymde";
-Vue.component('vue-easymde', VueEasymde)
+Vue.component('vue-easymde', VueEasymde);
+
+import VueSimplemde from 'vue-simplemde'
+Vue.component('vue-simplemde', VueSimplemde)
 
 import User from './Helpers/User';
 window.User = User;
-
-// console.log(User.hasToken());
+console.log(User.own());
 
 window.EventBus = new Vue();
 

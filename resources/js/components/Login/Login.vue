@@ -59,7 +59,7 @@ export default {
         }
     },
     created(){
-        if(User.loggedIn()) {
+        if(User.hasToken()) {
             this.$router.push({name: 'forum'})
         }
     },

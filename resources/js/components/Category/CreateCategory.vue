@@ -1,5 +1,8 @@
 <template>
     <v-container>
+        <v-alert v-if="errors" color="red" type="error">
+            Category Name is required
+        </v-alert>
         <v-card>
             <v-container>
                 <v-form v-on:submit="submit">
@@ -18,10 +21,20 @@
                             </v-text-field>
                         </v-col>
                     </v-row>
-                    <v-btn v-if="editSlug" color="orange" type="submit">
+                    <v-btn
+                        v-if="editSlug"
+                        color="orange"
+                        type="submit"
+                        :disabled="disabled"
+                    >
                         Update
                     </v-btn>
-                    <v-btn v-else color="green" type="submit">
+                    <v-btn
+                        v-else
+                        color="green"
+                        type="submit"
+                        :disabled="disabled"
+                    >
                         Create
                     </v-btn>
                 </v-form>
@@ -91,7 +104,8 @@ export default {
                 name: null
             },
             categories: {},
-            editSlug: null
+            editSlug: null,
+            errors: null
         };
     },
     methods: {
@@ -127,7 +141,9 @@ export default {
                     this.categories.unshift(response.data);
                     this.form.name = null;
                 })
-                .catch(error => console.error(error));
+                .catch(
+                    error => (this.errors = error.response.data.errors.name)
+                );
         },
         update() {
             axios
@@ -137,6 +153,11 @@ export default {
                     this.form.name = null;
                 })
                 .catch(error => console.error(error));
+        }
+    },
+    computed: {
+        disabled() {
+            return !this.form.name;
         }
     }
 };

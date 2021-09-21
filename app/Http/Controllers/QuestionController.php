@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuestionRequest;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use App\Models\User;
@@ -28,7 +29,7 @@ class QuestionController extends Controller
     public function index()
     {
         //Refer to QuestionResource
-        return QuestionResource::collection(Question::latest()->get());
+        return QuestionResource::collection(Question::latest()->paginate(5));
     }
 
     /**
@@ -37,10 +38,8 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionRequest $request)
     {
-        // $request['slug'] = Str::slug($request->title);
-        //or refer tp QUestion model to see boot utilization
         $question = auth()->user()->question()->create($request->all());
         return response(new QuestionResource($question), Response::HTTP_CREATED);
     }

@@ -5,7 +5,15 @@
 
         <v-container>
             <reply v-if="question" :question="question"></reply>
-            <new-reply :questionSlug="question.slug"></new-reply>
+            <new-reply
+                :questionSlug="question.slug"
+                v-if="loggedIn"
+            ></new-reply>
+            <v-card v-else class="text-center">
+                <router-link to="/login">
+                    <h4>Log in to reply and like</h4>
+                </router-link>
+            </v-card>
         </v-container>
     </div>
 </template>
@@ -43,6 +51,11 @@ export default {
             question: null,
             editing: false
         };
+    },
+    computed: {
+        loggedIn() {
+            return User.loggedIn();
+        }
     }
 };
 </script>

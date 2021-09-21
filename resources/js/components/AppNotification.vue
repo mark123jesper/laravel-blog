@@ -8,16 +8,16 @@
             </template>
             <v-list>
                 <v-list-item v-for="item in unread" :key="item.id">
-                    <router-link :to="item.path">
+                    <router-link :to="'/'+item.path">
                         <v-list-item-title v-on:click="markAsRead(item)">
                             {{ item.question }}
                         </v-list-item-title>
                     </router-link>
                 </v-list-item>
                 <v-list-item v-for="item in read" :key="item.id">
-                    <v-list-item-title>
-                        {{ item.question }}
-                    </v-list-item-title>
+                        <v-list-item-title>
+                            {{ item.question }}
+                        </v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>
@@ -33,11 +33,11 @@ export default {
         }
 
         Echo.private("App.Models.User." + User.getId()).notification(
-                notification => {
-                    this.unread.unshift( notification.reply.body);
-                    this.unreadCount++;
-                }
-            );
+            notification => {
+                this.unread.unshift(notification);
+                this.unreadCount++;
+            }
+        );
     },
     data() {
         return {
@@ -52,7 +52,8 @@ export default {
                 this.read = response.data.read;
                 this.unread = response.data.unread;
                 this.unreadCount = response.data.unread.length;
-            });
+            })
+            .catch(error => Exception.handle(error));
         },
         markAsRead(notification) {
             axios
@@ -66,8 +67,11 @@ export default {
     },
     computed: {
         color() {
-            return this.unreadCount > 0 ? "red" : "red lighten-4"
-        }
+            return this.unreadCount > 0 ? "red" : "red lighten-4";
+        },
+        // url(url) {
+        //     return router.push(url)
+        // }
     }
 };
 </script>

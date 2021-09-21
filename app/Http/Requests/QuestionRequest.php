@@ -24,9 +24,9 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|confirmed',
+            'title' => 'required',
+            'category_id' => 'required',
+            'body' => 'required',
         ];
     }
 }

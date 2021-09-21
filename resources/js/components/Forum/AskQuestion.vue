@@ -31,7 +31,7 @@
                     </v-col>
                 </v-row>
                 <vue-easymde v-model="form.body"/>
-                <v-btn color="green" type="submit">
+                <v-btn color="green" type="submit" :disabled="disabled">
                     Ask Question
                 </v-btn>
             </v-container>
@@ -67,6 +67,11 @@ export default {
             .get("api/category")
             .then(response => (this.categories = response.data.data))
             .catch(error => console.error(error));
+    },
+    computed: {
+        disabled() {
+            return !(this.form.title&&this.form.body&&this.form.category_id);
+        }
     }
 };
 </script>

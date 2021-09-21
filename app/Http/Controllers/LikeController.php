@@ -26,7 +26,6 @@ class LikeController extends Controller
                 'user_id' => auth()->id(),
             ]
         );
-
         broadcast(new LikeEvent($reply->id,1))->toOthers();
     }
 

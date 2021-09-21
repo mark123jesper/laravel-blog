@@ -19,6 +19,9 @@ import User from './Helpers/User';
 window.User = User;
 console.log(User.own());
 
+import Exception from './Helpers/Exception';
+window.Exception = Exception;
+
 window.EventBus = new Vue();
 
 import md from 'marked';

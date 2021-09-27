@@ -37,7 +37,7 @@
           cols="12"
           md="6"
         >
-          Copyright &copy; {{ new Date().getFullYear() }} Vuetify, LLC
+          Hello World! &copy; {{ new Date().getFullYear() }} Vuetify, LLC
         </v-col>
       </v-row>
     </v-container>
@@ -46,7 +46,7 @@
 
 <script>
   export default {
-    name: 'HomeFooter',
+    name: "Footers",
 
     data: () => ({
       social: [
